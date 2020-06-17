@@ -48,7 +48,7 @@ export default Component.extend({
   ],
   didInsertElement() {
     this._super(...arguments);
-    console.log('didInsertElement')
+    get(this, 'events').on('repositioned', e => this.positionTether());
     this.addTether();
   },
 
@@ -93,13 +93,7 @@ export default Component.extend({
   addTether() {
     if (get(this, '_tetherTarget')) {
       this._tether = new Tether(this._tetherOptions());
-      this._tether.on('repositioned', this.onRepositioned)
     }
-  },
-
-  onRepositioned() {
-    console.log('repositioned')
-    debugger
   },
 
   removeTether(tether) {
