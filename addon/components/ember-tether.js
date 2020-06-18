@@ -48,6 +48,7 @@ export default Component.extend({
   ],
   didInsertElement() {
     this._super(...arguments);
+    get(this, 'events').on('repositioned', e => this.positionTether());
     this.addTether();
   },
 
